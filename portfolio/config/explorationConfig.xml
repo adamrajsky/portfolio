@@ -1,0 +1,29 @@
+<exploration>
+    <xname>date</xname>
+    <features>
+        <feature>
+            <name>AAPL/close</name>
+            <filter>date > '2016-01-01'</filter>
+        </feature>
+        <feature>
+            <name>AMZN/close</name>
+            <filter>date > '2016-01-01'</filter>
+        </feature>
+        <feature>
+            <name>BRK-B/close</name>
+            <filter>date > '2016-01-01'</filter>
+        </feature>
+    </features>
+    <rolling_aggregates>
+        <ignorena>1</ignorena>
+        <rolling_mean>
+            <wcom>20</wcom>
+        </rolling_mean>
+        <rolling_std>
+            <wcom>360</wcom>
+        </rolling_std>
+        <rolling_correlation>
+            <wcom>360</wcom>
+        </rolling_correlation>
+    </rolling_aggregates>
+</exploration>
