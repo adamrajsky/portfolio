@@ -5,13 +5,12 @@ import common.pathUtils as pathutils
 
 class Dataset:
     def __init__(self):
-        self.load_dataset()
         self.companies = []
+        self.load_dataset()
 
     def load_dataset(self):
         base_path = pathutils.get_data_path() + '/stock_market_datasp500'
         dfs = []
-        self.companies = []
         for file in os.listdir(base_path):
             dfs.append(pd.read_csv(base_path + '/' + file))
             company = file[:-4]
