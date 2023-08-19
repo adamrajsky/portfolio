@@ -1,0 +1,10 @@
+<pca_strategy>
+    <stock_normalisation>
+        <trend_ewma_com>30</trend_ewma_com>
+        <std_ewma_com>360</std_ewma_com>
+        <ignorena>1</ignorena>
+    </stock_normalisation>
+    <window>360</window>
+    <report_pca>0</report_pca>
+    <decisionFrequency>380</decisionFrequency>
+</pca_strategy>
