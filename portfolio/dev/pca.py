@@ -2,16 +2,8 @@ from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 import pandas as pd
 import matplotlib.colors
+from common.colors import get_colorscheme
 
-
-def get_colorscheme(num_features):
-    hsv = plt.get_cmap('hsv')
-    offset = 0
-    color_step = 255 // num_features
-    colors = []
-    for i in range(num_features):
-        colors.append(matplotlib.colors.to_hex(hsv(i * color_step + offset)))
-    return colors
 
 class MarketPca:
     def __init__(self, date_from, date_to, df, feature_subset, n_components):
@@ -42,6 +34,7 @@ class MarketPca:
 
     def report(self, features_to_plot):
         self.fig = plt.figure()
+        self.fig.suptitle('Pca report : ' + str(self.date_from) + ' - ' + str(self.date_to), fontsize=14)
         heights = [4, 4, 4, 4]
         self.grid_spec = self.fig.add_gridspec(ncols=4, nrows=4, height_ratios=heights)
         self.plots_axes = []
@@ -70,5 +63,4 @@ class MarketPca:
         for i in range(len(df_diff_sq.columns)):
             colors_bar.append(colors_many[i % len(colors_many)])
         self.plots_axes[3].bar(list(range(1, len(df_diff_sq.columns) + 1)), feature_reconstruction_error.to_numpy(), tick_label=df_diff_sq.columns, color=colors_bar)
-        self.plots_axes[3].legend()
         self.plots_axes[3].set_title("Reconstruction error by feature")
