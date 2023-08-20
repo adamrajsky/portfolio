@@ -2,18 +2,19 @@
     <xname>date</xname>
     <features>
         <feature>
-            <name>AAPL/close</name>
-            <filter>date > '2016-01-01'</filter>
+            <name>XLE/close_log_ewmadiv</name>
+            <filter>date > '2017-01-01'</filter>
         </feature>
         <feature>
-            <name>AMZN/close</name>
-            <filter>date > '2016-01-01'</filter>
+            <name>XLF/close_log_ewmadiv</name>
+            <filter>date > '2017-01-01'</filter>
         </feature>
         <feature>
-            <name>BRK-B/close</name>
-            <filter>date > '2016-01-01'</filter>
+            <name>XLU/close_log_ewmadiv</name>
+            <filter>date > '2017-01-01'</filter>
         </feature>
     </features>
+    <detrend>0</detrend>
     <rolling_aggregates>
         <ignorena>1</ignorena>
         <rolling_mean>
