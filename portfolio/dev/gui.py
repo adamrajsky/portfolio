@@ -40,12 +40,13 @@ class ExploGUI:
             self.plotted_features.append(feature[0].text)
             self.filters.append(feature[1].text)
 
+        self.detrend = int(root.find('detrend').text)
+
         rolling_aggregates = root.find('rolling_aggregates')
         self.ignorena_rolling_aggregates = rolling_aggregates.find('ignorena').text
 
         rolling_mean = root.find('rolling_aggregates/rolling_mean')
         self.mean_wcom = float(rolling_mean.find('wcom').text)
-
 
         rolling_std = root.find('rolling_aggregates/rolling_std')
         self.std_wcom = float(rolling_std.find('wcom').text)
@@ -71,12 +72,16 @@ class ExploGUI:
 
         detrended_features = []
         for i in range(len(self.plotted_features)):
-            df.loc[:, 'rolling_mean(' + self.plotted_features[i] + ')'] = df.loc[:, self.plotted_features[i]].ewm(com=self.mean_wcom,
-                                                                                              ignore_na=self.ignorena_rolling_aggregates,
-                                                                                              min_periods=self.mean_wcom,
-                                                                                              adjust=True).mean()
+            if self.detrend:
+                df.loc[:, 'rolling_mean(' + self.plotted_features[i] + ')'] = df.loc[:, self.plotted_features[i]].ewm(com=self.mean_wcom,
+                                                                                                  ignore_na=self.ignorena_rolling_aggregates,
+                                                                                                  min_periods=self.mean_wcom,
+                                                                                                  adjust=True).mean()
+            else:
+                df.loc[:, 'rolling_mean(' + self.plotted_features[i] + ')'] = 0
             detrended_features.append(self.plotted_features[i] + '-rolling_mean(' + self.plotted_features[i] + ')')
             df.loc[:, detrended_features[i]] = df[self.plotted_features[i]] - df['rolling_mean(' + self.plotted_features[i] + ')']
+
             df.loc[:, 'rolling_std(' + detrended_features[i] + ')'] = df[detrended_features[i]].ewm(com=self.std_wcom,
                                                                                        ignore_na=self.ignorena_rolling_aggregates,
                                                                                        min_periods=self.std_wcom,
