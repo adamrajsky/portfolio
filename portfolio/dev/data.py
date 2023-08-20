@@ -4,19 +4,18 @@ import os
 import common.pathUtils as pathutils
 
 class Dataset:
-    def __init__(self):
+    def __init__(self, base_path):
+        self.base_path = base_path
         self.companies = []
-        self.load_dataset()
+        self.load_dataset(base_path)
 
-    def load_dataset(self):
-        base_path = pathutils.get_data_path() + '/stock_market_datasp500'
+    def load_dataset(self, base_path):
         dfs = []
         for file in os.listdir(base_path):
             dfs.append(pd.read_csv(base_path + '/' + file))
             company = file[:-4]
             self.companies.append(company)
             dfs[-1].columns = dfs[-1].columns.str.lower()
-            del dfs[-1]['open'], dfs[-1]['low'], dfs[-1]['high'], dfs[-1]['stock splits']
             for col in dfs[-1].columns:
                 if col == 'date':
                     continue
