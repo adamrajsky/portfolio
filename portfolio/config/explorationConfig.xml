@@ -2,16 +2,16 @@
     <xname>date</xname>
     <features>
         <feature>
-            <name>XLE/close_log_ewmadiv</name>
-            <filter>date > '2017-01-01'</filter>
+            <name>XLE/close_log_ewmadiv_std_ewma</name>
+            <filter>date > '2005-01-01'</filter>
         </feature>
         <feature>
-            <name>XLF/close_log_ewmadiv</name>
-            <filter>date > '2017-01-01'</filter>
+            <name>XLF/close_log_ewmadiv_std_ewma</name>
+            <filter>date > '2005-01-01'</filter>
         </feature>
         <feature>
-            <name>XLU/close_log_ewmadiv</name>
-            <filter>date > '2017-01-01'</filter>
+            <name>XLU/close_log_ewmadiv_std_ewma</name>
+            <filter>date > '2005-01-01'</filter>
         </feature>
     </features>
     <detrend>0</detrend>

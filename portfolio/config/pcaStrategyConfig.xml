@@ -1,12 +1,12 @@
 <pca_strategy>
     <stock_normalisation>
-        <trend_ewma_com>10</trend_ewma_com>
-        <std_ewma_com>500</std_ewma_com>
+        <trend_ewma_com>20</trend_ewma_com>
+        <std_ewma_com>250</std_ewma_com>
         <ignorena>1</ignorena>
     </stock_normalisation>
-    <window>1500</window>
-    <report_pca_model>1</report_pca_model>
-    <report_recalibration>1</report_recalibration>
+    <window>500</window>
+    <report_pca_model>0</report_pca_model>
+    <report_recalibration>0</report_recalibration>
     <report_rebalance>1</report_rebalance>
-    <decision_frequency>380</decision_frequency>
+    <decision_frequency>260</decision_frequency>
 </pca_strategy>
