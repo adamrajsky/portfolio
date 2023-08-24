@@ -7,9 +7,9 @@ from strategy.pca_strategy import PcaStrategy
 
 from dev.data import Dataset
 
-def run_backtest(data, data_date_from, backtest_date_from, date_to, initial_bankroll, strategy):
+def run_backtest(data, data_compare, data_date_from, backtest_date_from, date_to, initial_bankroll, strategy):
     logger = Logger("")
-    reporter = Reporter(backtest_date_from, date_to)
+    reporter = Reporter(backtest_date_from, date_to, data_compare)
     backtest = Backtest(data, data.companies, data_date_from, date_to, initial_bankroll, reporter, logger)
 
     while (not backtest.is_backtest_finished()):

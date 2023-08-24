@@ -13,15 +13,17 @@ from backtest.run_backtest import run_backtest
 
 if __name__ == '__main__':
     path = get_data_path() + '/sector_funds'
+    path_compare = get_data_path() + '/report_compare'
     date_from = pd.Timestamp('2000-01-01')
-    backtest_date_from = pd.Timestamp('2007-01-01')
+    backtest_date_from = pd.Timestamp('2004-01-01')
     date_to = pd.Timestamp('2020-01-01')
     data = Dataset(path)
+    data_compare = Dataset(path_compare)
     initial_bankroll = 10000
 
     strategy_config = '../config/pcaStrategyConfig.xml'
     strategy = PcaStrategy(data.companies, strategy_config)
 
-    run_backtest(data, date_from, backtest_date_from, date_to, 10000, strategy)
+    run_backtest(data, data_compare, date_from, backtest_date_from, date_to, 10000, strategy)
 
     plt.show()
